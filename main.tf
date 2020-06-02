@@ -1,31 +1,18 @@
-# Create a new instance of the latest Ubuntu 14.04 on an
-# t2.micro node with an AWS Tag naming it "HelloWorld"
-provider "aws" {
-  region = "us-west-2"
+terraform {
+  backend "remote" {
+    # The name of your Terraform Cloud organization.
+    organization = "prakash_demo"
+
+    # The name of the Terraform Cloud workspace to store Terraform state files in.
+    workspaces {
+      name = "example-workspace"
+    }
+  }
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
-  count         = var.inst_count
-
-  tags = {
-    Name = "HelloWorld"
+# An example resource that does nothing.
+resource "null_resource" "example" {
+  triggers = {
+    value = "A example resource that does nothing!"
   }
 }
