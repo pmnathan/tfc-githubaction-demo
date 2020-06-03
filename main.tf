@@ -12,6 +12,7 @@ terraform {
 
 # An example resource that does nothing.
 resource "null_resource" "example" {
+  count    = 3
   triggers = {
     value = "A example resource that does nothing!"
   }
