@@ -18,7 +18,7 @@ provider "aws" {
 resource "aws_instance" "example" {
   ami           = var.machine-ami
   instance_type = "t2.small"
-  count = 2
+  count = 1
 
   tags = {
     Name = "fanniemae-demo-${count.index}"
