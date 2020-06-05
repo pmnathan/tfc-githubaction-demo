@@ -17,7 +17,7 @@ provider "aws" {
 
 resource "aws_instance" "example" {
   ami           = var.machine-ami
-  instance_type = "t2.micro"
+  instance_type = "t2.small"
   count = 3
 
   tags = {
@@ -35,10 +35,9 @@ module "s3_bucket" {
   acl    = "private"
 
   tags = {
-    Name  = "S3 Simple Demo"
+    Name  = "s3-simple-demo-fanniemae"
     ttl   = 0
     Owner = "Prakash"
-
   }
 
   versioning = {
