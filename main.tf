@@ -22,6 +22,8 @@ resource "aws_instance" "example" {
 
   tags = {
     Name = "fanniemae-demo-${count.index}"
+    ttl   = 0
+    Owner = "Prakash"
   }
 }
 
