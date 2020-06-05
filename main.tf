@@ -10,9 +10,28 @@ terraform {
   }
 }
 
-# An example resource that does nothing.
-resource "null_resource" "example" {
-  triggers = {
-    value = "A example resource that does nothing! 123456789"
+provider "aws" {
+  version = "~> 2.0"
+  region  = "us-east-1"
+}
+
+
+
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  bucket = "prakash-s3-bucket"
+  acl    = "private"
+
+  tags = {
+    Name = "S3 Simple Demo"
+    ttl  = 0
+    Owner = "Prakash"
+    
+  }
+  
+
+  versioning = {
+    enabled = true
   }
 }
