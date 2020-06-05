@@ -18,26 +18,24 @@ provider "aws" {
 
 
 data "terraform_remote_state" "subnet" {
-  backend = "remote"
+  backend = "atlas"
 
   config = {
-    organization = "fanniemae_pov"
-    workspaces = {
-      name = "project1-network-east1-dev"
-    }
+    address = "https://app.terraform.io"
+    name = "${var.remote_organization}/${var.subnet_remote_workspace_name}"
+    access_token = var.token_org
   }
 }
 
 
-resource "aws_network_interface" "foo" {
-  subnet_id   = terraform_remote_state.subnet.private_subnets[0]
-
-  tags = {
-    Name = "primary_network_interface"
-    ttl   = 0
-    Owner = "Prakash"
-  }
-}
+#resource "aws_network_interface" "foo" {
+#  subnet_id   = terraform_remote_state.subnet.private_subnets[0]
+#  tags = {
+#    Name = "primary_network_interface"
+#    ttl   = 0
+#    Owner = "Prakash"
+#  }
+#}
 
 
 resource "aws_instance" "example" {
