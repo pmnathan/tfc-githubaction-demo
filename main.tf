@@ -29,7 +29,7 @@ data "terraform_remote_state" "subnet" {
 
 
 resource "aws_network_interface" "foo" {
-  subnet_id   = data.terraform_remote_state.subnet.private_subnets[0]
+  subnet_id   = data.terraform_remote_state.subnet.outputs.private_subnets[0]
   tags = {
     Name = "primary_network_interface"
     ttl   = 0
