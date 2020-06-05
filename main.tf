@@ -28,14 +28,14 @@ data "terraform_remote_state" "subnet" {
 }
 
 
-#resource "aws_network_interface" "foo" {
-#  subnet_id   = terraform_remote_state.subnet.private_subnets[0]
-#  tags = {
-#    Name = "primary_network_interface"
-#    ttl   = 0
-#    Owner = "Prakash"
-#  }
-#}
+resource "aws_network_interface" "foo" {
+  subnet_id   = terraform_remote_state.subnet.private_subnets[0]
+  tags = {
+    Name = "primary_network_interface"
+    ttl   = 0
+    Owner = "Prakash"
+  }
+}
 
 
 resource "aws_instance" "example" {
