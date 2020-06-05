@@ -28,23 +28,15 @@ data "terraform_remote_state" "subnet" {
 }
 
 
-resource "aws_network_interface" "foo" {
-  subnet_id   = data.terraform_remote_state.subnet.outputs.private_subnets[0]
-  tags = {
-    Name = "primary_network_interface"
-    ttl   = 0
-    Owner = "Prakash"
-  }
-}
-
-
 resource "aws_instance" "example" {
   ami           = var.machine-ami
   instance_type = "t2.small"
-  count = 1
+  count         = 1
+  subnet_id     = data.terraform_remote_state.subnet.outputs.private_subnets[0]
+
 
   tags = {
-    Name = "fanniemae-demo-${count.index}"
+    Name  = "fanniemae-demo-${count.index}"
     ttl   = 0
     Owner = "Prakash"
   }
