@@ -29,9 +29,10 @@ resource "aws_instance" "example" {
 
 
 module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
+  source  = "app.terraform.io/fanniemae_pov/s3-bucket/aws"
+  version = "1.7.0"
 
-  bucket = "prakash-s3-bucket-001"
+  bucket = "prakash-s3-bucket-002"
   acl    = "private"
 
   tags = {
