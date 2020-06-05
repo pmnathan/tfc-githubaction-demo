@@ -1,9 +1,9 @@
 terraform {
   backend "remote" {
-    # The name of your Terraform Cloud organization.
+
+    required_version = "> 0.12.7"
     organization = "fanniemae_pov"
 
-    # The name of the Terraform Cloud workspace to store Terraform state files in.
     workspaces {
       name = "project1-app-east1-dev"
     }
