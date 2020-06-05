@@ -1,7 +1,7 @@
 terraform {
   backend "remote" {
 
-    required_version = "> 0.12.7"
+    required_version = "~> 0.12.6"
     organization = "fanniemae_pov"
 
     workspaces {
