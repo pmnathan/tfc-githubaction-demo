@@ -31,7 +31,7 @@ resource "aws_instance" "example" {
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
 
-  bucket = "prakash-s3-bucket"
+  bucket = "prakash-s3-bucket-001"
   acl    = "private"
 
   tags = {
