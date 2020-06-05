@@ -24,6 +24,7 @@ module "s3_bucket" {
 
   tags = {
     Name  = "S3 Simple Demo"
+    ttl   = 0
     Owner = "Prakash"
 
   }
