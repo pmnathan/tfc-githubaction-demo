@@ -11,9 +11,19 @@ terraform {
 
 provider "aws" {
   version = "~> 2.0"
-  region  = "us-east-1"
+  profile    = "default"
+  region     = var.region
 }
 
+resource "aws_instance" "example" {
+  ami           = var.machine-ami
+  instance_type = "t2.micro"
+  count = 3
+
+  tags = {
+    Name = "fanniemae-demo-${count.index}"
+  }
+}
 
 
 module "s3_bucket" {
