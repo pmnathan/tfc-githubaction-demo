@@ -23,12 +23,12 @@ module "s3_bucket" {
   acl    = "private"
 
   tags = {
-    Name = "S3 Simple Demo"
-    ttl  = 0
+    Name  = "S3 Simple Demo"
+    ttl   = 0
     Owner = "Prakash"
-    
+
   }
-  
+
 
   versioning = {
     enabled = true
