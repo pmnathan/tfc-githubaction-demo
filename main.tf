@@ -1,7 +1,7 @@
 terraform {
   backend "remote" {
 
-    organization = "fanniemae_pov"
+    organization = "prakash_demo"
 
     workspaces {
       name = "project1-app-east1-dev"
