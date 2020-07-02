@@ -52,7 +52,7 @@ module "s3_bucket" {
 
   tags = {
     Name  = "s3-simple-demo-prakash"
-    ttl   = 0
+    ttl   = 120
     Owner = "Prakash"
   }
 
