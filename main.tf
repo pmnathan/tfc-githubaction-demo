@@ -47,7 +47,7 @@ module "s3_bucket" {
   source  = "app.terraform.io/fanniemae_pov/s3-bucket/aws"
   version = "1.7.0"
 
-  bucket = "prakash-s3-bucket-002-01"
+  bucket = "prakash-s3-bucket-002-0200"
   acl    = "private"
 
   tags = {
