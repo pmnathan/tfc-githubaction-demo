@@ -3,7 +3,9 @@ terraform {
     organization = "prakash_demo"
     workspaces {
       name = "project1-app-west2-dev"
-    }}}
+    }
+   }
+  }
 
 provider "aws" {
   version = "~> 2.0"
