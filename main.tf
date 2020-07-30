@@ -25,7 +25,7 @@ data "terraform_remote_state" "subnet" {
 resource "aws_instance" "example" {
   ami           = var.machine-ami
   instance_type = "t2.small"
-  count         = 1
+  count         = 3
   subnet_id     = data.terraform_remote_state.subnet.outputs.private_subnets[0]
   tags = {
     Name  = "prakash-demo-${count.index}"
