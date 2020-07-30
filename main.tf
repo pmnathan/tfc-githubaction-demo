@@ -1,14 +1,9 @@
 terraform {
   backend "remote" {
-
     organization = "prakash_demo"
-
     workspaces {
       name = "project1-app-west2-dev"
-    }
-  }
-}
-
+    }}}
 
 provider "aws" {
   version = "~> 2.0"
@@ -16,10 +11,8 @@ provider "aws" {
   region     = var.region
 }
 
-
 data "terraform_remote_state" "subnet" {
   backend = "atlas"
-
   config = {
     address = "https://app.terraform.io"
     name = "${var.remote_organization}/${var.subnet_remote_workspace_name}"
@@ -27,14 +20,11 @@ data "terraform_remote_state" "subnet" {
   }
 }
 
-
 resource "aws_instance" "example" {
   ami           = var.machine-ami
   instance_type = "t2.small"
-  count         = 2
+  count         = 1
   subnet_id     = data.terraform_remote_state.subnet.outputs.private_subnets[0]
-
-
   tags = {
     Name  = "prakash-demo-${count.index}"
     ttl   = 4
@@ -42,23 +32,17 @@ resource "aws_instance" "example" {
   }
 }
 
-
 module "s3_bucket" {
   source  = "app.terraform.io/fanniemae_pov/s3-bucket/aws"
   version = "1.7.0"
-
   bucket = "prakash-s3-bucket-002-0200"
   acl    = "private"
-
   tags = {
     Name  = "s3-simple-demo-prakash"
     ttl   = 120
     Owner = "Prakash"
   }
-
   versioning = {
     enabled = true
   }
 }
-
-
